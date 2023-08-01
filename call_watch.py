@@ -7,7 +7,7 @@ from pync import Notifier
 # By: Gordon VK3TEN 2023-08-01
 
 # Callsigns to monitor
-calls = ['KC7ZOH', "VK3XEM", "VK3UT", "VK3YHT"]
+calls = ['KC7ZOH', "VK3XEM", "VK3UT", "VK3YHT", "VK3TEN"]
 
 sio = socketio.Client()
 
