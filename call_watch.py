@@ -29,7 +29,7 @@ def on_message(data):
     if destination_id == 91:
         print(f"{source_id} - {source_call} - {source_name} - {destination_id}")
         if source_call in calls:
-            Notifier.notify(f"{source_call} is on Brandmeister TG91")
+            Notifier.notify(f"{source_call} - {source_name} is on BrandMeister TG91")
     return
 
 sio.connect(url='https://api.brandmeister.network', socketio_path="/lh/socket.io", transports="websocket")
