@@ -7,7 +7,7 @@ from notifypy import Notify
 # By: Gordon VK3TEN 2023-08-01
 
 # Callsigns to monitor
-calls = ['KC7ZOH', "VK3XEM", "VK3UT", "VK3YHT", "VK3TEN"]
+calls = ['KC7ZOH', "VK3XEM", "VK3UT", "VK3YHT", "VK3TIM", "VK3TEN"]
 
 sio = socketio.Client()
 
@@ -29,7 +29,7 @@ def on_message(data):
     if destination_id == 91:
         #Comment out the next line if you don't want to see all calls on the console
         print(f"{source_id} - {source_call} - {source_name} - {destination_id}")
-        if source_call not in calls:
+        if source_call in calls:
             notification = Notify()
             notification.title = "Call Watch"
             notification.message = f"{source_call} - {source_name} is on BrandMeister TG91"
