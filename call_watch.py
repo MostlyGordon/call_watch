@@ -1,7 +1,7 @@
-#!/usr/local/bin/python
+"""#!/usr/local/bin/python - works on my Mac"""
 import socketio
 import json
-from pync import Notifier
+from notifypy import Notify
 
 # Program to monitor Brandmeister TG91 and notify when a call is made from a specific call sign
 # By: Gordon VK3TEN 2023-08-01
@@ -27,9 +27,13 @@ def on_message(data):
     source_id = responce['SourceID']
     destination_id = responce['DestinationID']
     if destination_id == 91:
+        #Comment out the next line if you don't want to see all calls on the console
         print(f"{source_id} - {source_call} - {source_name} - {destination_id}")
-        if source_call in calls:
-            Notifier.notify(f"{source_call} - {source_name} is on BrandMeister TG91")
+        if source_call not in calls:
+            notification = Notify()
+            notification.title = "Call Watch"
+            notification.message = f"{source_call} - {source_name} is on BrandMeister TG91"
+            notification.send()
     return
 
 sio.connect(url='https://api.brandmeister.network', socketio_path="/lh/socket.io", transports="websocket")
