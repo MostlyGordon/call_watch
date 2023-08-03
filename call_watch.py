@@ -7,7 +7,10 @@ from notifypy import Notify
 # By: Gordon VK3TEN 2023-08-01
 
 # Callsigns to monitor
-calls = ['KC7ZOH', "VK3XEM", "VK3UT", "VK3YHT", "VK3TIM", "VK3TEN"]
+calls = ['KC7ZOH', "VK3XEM", "VK3UT", "VK3YHT", "VK3TIM", "DG0TD", "WC3H"]
+
+# Talk Groups to monitor
+tg = [91, 31656]
 
 sio = socketio.Client()
 
@@ -26,13 +29,13 @@ def on_message(data):
     source_name = responce['SourceName']
     source_id = responce['SourceID']
     destination_id = responce['DestinationID']
-    if destination_id == 91:
+    if destination_id in tg:
         #Comment out the next line if you don't want to see all calls on the console
         print(f"{source_id} - {source_call} - {source_name} - {destination_id}")
         if source_call in calls:
             notification = Notify()
             notification.title = "Call Watch"
-            notification.message = f"{source_call} - {source_name} is on BrandMeister TG91"
+            notification.message = f"{source_call} - {source_name} is on BrandMeister TG{destination_id}"
             notification.send()
     return
 
