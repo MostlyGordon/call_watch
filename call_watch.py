@@ -3,7 +3,7 @@ import socketio
 import json
 from notifypy import Notify
 
-# Program to monitor Brandmeister TG91 and notify when a call is made from a specific call sign
+# Program to monitor Brandmeister and notify when a call is made from a specific call signs
 # By: Gordon VK3TEN 2023-08-01
 
 # Callsigns to monitor
